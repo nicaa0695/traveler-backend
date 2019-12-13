@@ -19,6 +19,20 @@ class DestinationsController < ApplicationController
         end
     end
 
+    def update
+        if @destination.update(destination_params)
+          @destination.save
+          render json: @destination
+        else
+          render json: {error: 'Unable to edit the destination.'}
+        end
+    end
+    
+    def destroy
+        @destination.destroy
+        render json: @destination
+    end
+
     private
     def destination_params
         params.require(:destination).permit(:id, :name, :country, :image, :visited, :bucket_list)
