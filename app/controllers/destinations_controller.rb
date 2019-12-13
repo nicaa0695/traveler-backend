@@ -35,10 +35,11 @@ class DestinationsController < ApplicationController
 
     private
     def destination_params
-        params.require(:destination).permit(:id, :name, :country, :image, :visited, :bucket_list)
+      params.require(:destination).permit(:id, :name, :country, :image, :visited, :bucket_list)
     end
-
+  
     def set_destination
-        @destination = Destination.find(params[:id])
+      @destination = Destination.find(params[:id])
     end
+  
 end 
