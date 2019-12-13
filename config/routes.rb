@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
       resources :destinations do
-        resources :categories
+        resources :activities
   end
 end
