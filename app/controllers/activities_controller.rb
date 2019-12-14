@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-    before_action :set_destination
+  before_action :set_destination
 
   def index
     @activities = @destination.activities
@@ -33,7 +33,11 @@ class ActivitiesController < ApplicationController
   end
 
   def set_destination
-    @destination = Destination.find(params[:destination_id])
+    # binding.pry
+    # @destination = Destination.find(params[:destination_id])
+    unless @destination = Destination.where(id: params[:destination_id]).first
+      redirect_to destinations_path, flash: {alert: "Destination doesn't exists"}
+    end
   end
 
 end 
